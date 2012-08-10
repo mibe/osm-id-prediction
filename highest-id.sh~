@@ -6,9 +6,9 @@ then
 	exit
 fi
 
-if [ ! -r $1 ]
+if [ ! -e $1 ]
 then
-	echo "File not found or not readable."
+	echo "File not found."
 	exit
 fi
 
