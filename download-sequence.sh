@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ ! $# -eq 1 ]
+then
+	echo "Missing argument: download-sequence.sh <sequence number>"
+        exit
+fi
+
 PAD_SEQ=$(printf "%03d" $1)
 
 BASE_URL=http://planet.osm.org/redaction-period/day-replicate/000/000/
