@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ ! $# -eq 1 ]
+if [ ! $# -eq 2 ]
 then
-	echo "Missing argument: highest-id.sh <OsmChange file>"
+	echo "Missing argument: highest-id.sh <OsmChange file> <element type>"
 	exit
 fi
 
