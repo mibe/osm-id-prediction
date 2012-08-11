@@ -1,11 +1,15 @@
 #!/bin/bash
 
-if [ ! -e "last-sequence" ]
+# File, in which the latest processed sequence number is saved
+SEQ_FILE="last-sequence"
+
+# Initialize file with last sequence number if it's not existing
+if [ ! -e "SEQ_FILE" ]
 then
 	echo "0" > last-sequence
 fi
 
-LAST_SEQ=$(cat last-sequence)
+LAST_SEQ=$(cat $SEQ_FILE)
 CURR_SEQ=$(./get-latest-sequence.sh)
 
 echo "Latest sequence in database: $LAST_SEQ"
@@ -24,11 +28,14 @@ do
 	# Replication sequences are one-based.
 	let COUNTER=COUNTER+1
 
-	echo "$COUNTER - Downloading replication sequence..."
+	echo "$COUNTER - Downloading replication files..."
 	./download-sequence.sh $COUNTER
 	echo "$COUNTER - Done downloading - detectig highest element ID..."
 	./update-db.sh $COUNTER
 	echo "$COUNTER - Done."
+	
+	# Save latest processed sequence already here
+	echo $COUNTER > $SEQ_FILE
 done
 
 echo "--- DONE ---"
