@@ -8,9 +8,13 @@ fi
 
 PAD_SEQ=$(printf "%03d" $1)
 
-BASE_URL=http://planet.osm.org/redaction-period/day-replicate/000/000/
-OSC_URL=$BASE_URL/$PAD_SEQ.osc.gz
-STATE_URL=$BASE_URL/$PAD_SEQ.state.txt
+if [ "$BASE_URL" == "" ]
+then
+	BASE_URL=http://planet.osm.org/redaction-period/day-replicate/
+fi
+
+OSC_URL=$BASE_URL/000/000/$PAD_SEQ.osc.gz
+STATE_URL=$BASE_URL/000/000/$PAD_SEQ.state.txt
 
 download ()
 {
@@ -21,7 +25,7 @@ download ()
 		then rm $FILE
 	fi
 	
-	curl --progress-bar -o $FILE $1
+	curl -C --progress-bar -o $FILE $1
 }
 
 download $OSC_URL
