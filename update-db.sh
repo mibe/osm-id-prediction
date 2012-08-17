@@ -22,7 +22,7 @@ function update_db_file ()
 	then
 		echo "entry for $DATE already in $DB"
 	else
-		echo $DATE,$ID > $DB
+		echo "$DATE,$ID" >> $DB
 	fi
 }
 
