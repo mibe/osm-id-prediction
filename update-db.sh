@@ -17,12 +17,27 @@ function update_db_file ()
 	DATE=$2
 	ID=$3
 	
+	ENTRY="$DATE,$ID"
+	
 	# Check if date is already in database
-	if grep -qs "$DATE" $DB
+	TEST=$(grep -s "$DATE" $DB)
+	
+	if [ $? -eq 0 ]
 	then
-		echo "entry for $DATE already in $DB"
+		# Date is already in database
+		VALUE=$(echo "$TEST" | grep -Eo '[0-9]+$')
+		echo "Entry for $DATE is already in $DB with ID $VALUE."
+		
+		if [ $ID -gt $VALUE ]
+		then
+			sed -i "s/$DATE,$VALUE/$ENTRY/g" $DB
+			echo "Entry overwritten with higher ID $ID."
+		else
+			echo "No update neccessary for $DATE in $DB."
+		fi
 	else
-		echo "$DATE,$ID" >> $DB
+		# Add new entry to database
+		echo "$ENTRY" >> $DB
 	fi
 }
 
@@ -59,4 +74,4 @@ update_db_file $NODE_DB $DATE $NODE_ID
 update_db_file $WAY_DB $DATE $WAY_ID
 update_db_file $RELATION_DB $DATE $RELATION_ID
 
-echo "$1 - Database updated."
+echo "$1 - Database update finished."
