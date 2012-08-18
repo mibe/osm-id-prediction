@@ -22,6 +22,9 @@ URL=$BASE_URL/$FIRST/$SECOND/$THIRD
 OSC_URL=$URL.osc.gz
 STATE_URL=$URL.state.txt
 
+# Core download function
+#
+# 1 = URL to download
 download ()
 {
 	# Generate filename from full padded sequence number
