@@ -34,7 +34,7 @@ do
 		./download-sequence.sh $COUNTER
 	fi
 
-	echo "$COUNTER - Ddetectig highest element ID and population database..."
+	echo "$COUNTER - Detecting highest element ID and populating database..."
 	./update-db.sh $COUNTER
 	echo "$COUNTER - Done."
 	
