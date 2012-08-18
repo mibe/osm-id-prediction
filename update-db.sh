@@ -46,7 +46,7 @@ NODE_DB=node.db
 WAY_DB=way.db
 RELATION_DB=relation.db
 
-FILE=$(printf "%03d" $1)
+FILE=$(printf "%09d" $1)
 OSC_FILE=$FILE.osc.gz
 STATE_FILE=$FILE.state.txt
 

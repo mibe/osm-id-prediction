@@ -24,7 +24,9 @@ STATE_URL=$URL.state.txt
 
 download ()
 {
-	FILE=$(basename $1)
+	# Generate filename from full padded sequence number
+	EXTENSION=$(echo $1 | grep -Eo '[a-z]+\.[a-z]+$')
+	FILE=$PAD_SEQ.$EXTENSION
 
 	# Delete file if existing	
 	if [ -e $FILE ]
