@@ -62,6 +62,12 @@ fi
 
 DATE=$(cat $STATE_FILE | grep -Eo '[0-9]{4}-[0-9]{2}-[0-9]{2}')
 
+if [ $? -ne 0 ]
+then
+	echo "Coult not detect date in state file."
+	exit 1
+fi
+
 echo "$1 - Detected date: $DATE"
 
 NODE_ID=$(exec ./highest-id.sh $OSC_FILE node)
