@@ -28,9 +28,13 @@ do
 	# Replication sequences are one-based.
 	let COUNTER=COUNTER+1
 
-	echo "$COUNTER - Downloading replication files..."
-	./download-sequence.sh $COUNTER
-	echo "$COUNTER - Done downloading - detectig highest element ID..."
+	if [ "$NO_DL" == "" ]
+	then
+		echo "$COUNTER - Downloading replication files..."
+		./download-sequence.sh $COUNTER
+	fi
+
+	echo "$COUNTER - Ddetectig highest element ID and population database..."
 	./update-db.sh $COUNTER
 	echo "$COUNTER - Done."
 	
