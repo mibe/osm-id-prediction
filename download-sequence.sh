@@ -6,15 +6,21 @@ then
         exit
 fi
 
-PAD_SEQ=$(printf "%03d" $1)
+# Padding of sequence number e.g. 123 --> 000000123
+PAD_SEQ=$(printf "%09d" $1)
 
 if [ "$BASE_URL" == "" ]
 then
 	BASE_URL=http://planet.osm.org/redaction-period/day-replicate/
 fi
 
-OSC_URL=$BASE_URL/000/000/$PAD_SEQ.osc.gz
-STATE_URL=$BASE_URL/000/000/$PAD_SEQ.state.txt
+# Build URLs to download
+FIRST=$(echo $PAD_SEQ | cut -c 1-3)
+SECOND=$(echo $PAD_SEQ | cut -c 4-6)
+THIRD=$(echo $PAD_SEQ | cut -c 7-9)
+URL=$BASE_URL$FIRST/$SECOND/$THIRD
+OSC_URL=$URL.osc.gz
+STATE_URL=$URL.state.txt
 
 download ()
 {
@@ -25,7 +31,7 @@ download ()
 		then rm $FILE
 	fi
 	
-	curl -C --progress-bar -o $FILE $1
+	curl --progress-bar -f -o $FILE $1
 }
 
 download $OSC_URL
