@@ -4,9 +4,9 @@
 SEQ_FILE="last-sequence"
 
 # Initialize file with last sequence number if it's not existing
-if [ ! -e "SEQ_FILE" ]
+if [ ! -e "$SEQ_FILE" ]
 then
-	echo "0" > last-sequence
+	echo "0" > $SEQ_FILE
 fi
 
 LAST_SEQ=$(cat $SEQ_FILE)
