@@ -47,7 +47,7 @@ WAY_DB="way.db"
 RELATION_DB="relation.db"
 
 # Location of the replication files
-if [ "$DATA_PATH" == "" ]
+if [ "$DATA_PATH" == "" ] || [ -d $DATA_PATH ]
 then
 	DATA_PATH="."
 fi

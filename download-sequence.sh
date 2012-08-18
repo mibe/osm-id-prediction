@@ -27,6 +27,11 @@ STATE_URL=$URL.state.txt
 # 1 = URL to download
 download ()
 {
+	if [ "$DATA_PATH" == "" ] || [ ! -d $DATA_PATH ]
+	then
+		DATA_DIR="."
+	fi
+
 	# Generate filename from full padded sequence number
 	EXTENSION=$(echo $1 | grep -Eo '[a-z]+\.[a-z]+$')
 	FILE=$PAD_SEQ.$EXTENSION
@@ -36,7 +41,7 @@ download ()
 		then rm $FILE
 	fi
 	
-	curl --progress-bar -f -o $FILE $1
+	curl --progress-bar -f -o $DATA_PATH/$FILE $1
 }
 
 download $OSC_URL
