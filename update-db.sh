@@ -71,7 +71,7 @@ DATE=$(cat $STATE_FILE | grep -Eo '[0-9]{4}-[0-9]{2}-[0-9]{2}')
 if [ $? -ne 0 ]
 then
 	echo "Coult not detect date in state file."
-	exit 1
+	exit 2
 fi
 
 echo "$1 - Detected date: $DATE"

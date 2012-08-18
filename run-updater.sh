@@ -35,9 +35,17 @@ do
 	fi
 
 	echo "$COUNTER - Detecting highest element ID and populating database..."
+
 	./update-db.sh $COUNTER
-	echo "$COUNTER - Done."
-	
+
+	if [ $? -eq 0 ]
+	then
+		echo "$COUNTER - Done."
+	else
+		echo "$COUNTER - Error occurred, aborting."
+		break;
+	fi
+
 	# Save latest processed sequence already here
 	echo $COUNTER > $SEQ_FILE
 done
