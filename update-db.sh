@@ -42,13 +42,19 @@ function update_db_file ()
 }
 
 # Database files
-NODE_DB=node.db
-WAY_DB=way.db
-RELATION_DB=relation.db
+NODE_DB="node.db"
+WAY_DB="way.db"
+RELATION_DB="relation.db"
+
+# Location of the replication files
+if [ "$DATA_PATH" == "" ]
+then
+	DATA_PATH="."
+fi
 
 FILE=$(printf "%09d" $1)
-OSC_FILE=$FILE.osc.gz
-STATE_FILE=$FILE.state.txt
+OSC_FILE=$DATA_PATH/$FILE.osc.gz
+STATE_FILE=$DATA_PATH/$FILE.state.txt
 
 if [ ! -e $OSC_FILE ]
 then
