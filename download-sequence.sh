@@ -11,14 +11,14 @@ PAD_SEQ=$(printf "%09d" $1)
 
 if [ "$BASE_URL" == "" ]
 then
-	BASE_URL=http://planet.osm.org/redaction-period/day-replicate/
+	BASE_URL=http://planet.osm.org/redaction-period/day-replicate
 fi
 
 # Build URLs to download
 FIRST=$(echo $PAD_SEQ | cut -c 1-3)
 SECOND=$(echo $PAD_SEQ | cut -c 4-6)
 THIRD=$(echo $PAD_SEQ | cut -c 7-9)
-URL=$BASE_URL$FIRST/$SECOND/$THIRD
+URL=$BASE_URL/$FIRST/$SECOND/$THIRD
 OSC_URL=$URL.osc.gz
 STATE_URL=$URL.state.txt
 
