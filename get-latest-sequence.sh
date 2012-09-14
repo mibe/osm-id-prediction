@@ -4,7 +4,7 @@ URL=state.txt
 
 if [ "$BASE_URL" == "" ]
 then
-	URL=http://planet.osm.org/redaction-period/day-replicate/$URL
+	URL=http://planet.osm.org/replication/day/$URL
 else
 	URL=$BASE_URL/$URL
 fi

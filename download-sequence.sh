@@ -11,7 +11,7 @@ PAD_SEQ=$(printf "%09d" $1)
 
 if [ "$BASE_URL" == "" ]
 then
-	BASE_URL=http://planet.osm.org/redaction-period/day-replicate
+	BASE_URL=http://planet.osm.org/replication/day
 fi
 
 # Build URLs to download
