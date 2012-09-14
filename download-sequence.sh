@@ -29,7 +29,7 @@ download ()
 {
 	if [ "$DATA_PATH" == "" ] || [ ! -d $DATA_PATH ]
 	then
-		DATA_DIR="."
+		DATA_PATH="."
 	fi
 
 	# Generate filename from full padded sequence number
