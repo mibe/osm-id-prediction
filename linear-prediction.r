@@ -1,7 +1,11 @@
-# Read node database; 1st col. is the day, 2nd col. is the max. ID for this day
-nodes <- read.table("E:\\osm-replicates\\node.db", header=FALSE, sep=",",
+# Path to database file
+path <- "E:\\osm-replicates\\node.db"
+
+# Read database
+# 1st col. is the day, 2nd col. is the highest ID for this day
+db <- read.table(path, header=FALSE, sep=",",
   colClasses=c("Date", "numeric"), col.names=c("day", "maxid"))
-attach(nodes)
+attach(db)
 
 # This is our prediction target (2^31 + 1)
 targetid <- 2147483649

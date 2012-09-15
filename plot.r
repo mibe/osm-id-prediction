@@ -1,10 +1,14 @@
-# Read node database; V1 = day, V2 = max. ID for this day
-nodes <- read.table("E:\\osm-replicates\\node.db", header=FALSE, sep=",",
+# Path to database file
+path <- "E:\\osm-replicates\\node.db"
+
+# Read database
+# 1st col. is the day, 2nd col. is the highest ID for this day
+db <- read.table(path, header=FALSE, sep=",",
   colClasses=c("Date", "numeric"), col.names=c("day", "maxid"))
-attach(nodes)
+attach(db)
 
 # Plot as line
-plot(maxid ~ day, nodes, type = "l", yaxt = "n", xlab="Date", ylab="ID")
+plot(maxid ~ day, db, type = "l", yaxt = "n", xlab="Date", ylab="ID")
 axis(2, maxid)
 
 # Regression line
