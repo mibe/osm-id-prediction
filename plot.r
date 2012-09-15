@@ -5,3 +5,11 @@ nodes$V1 <- as.Date(nodes$V1, "%Y-%m-%d")
 # Plot as line
 plot(V2 ~ V1, nodes, type = "l", yaxt = "n", xlab="Date", ylab="ID")
 axis(2, nodes$V2)
+
+# Regression line
+reg = lm(nodes$V2 ~ nodes$V1)
+abline(reg, col="red")
+
+# LOWESS
+low = lowess(nodes$V2, nodes$V1)
+lines(low, col="blue")
