@@ -16,5 +16,7 @@ reg = lm(maxid ~ day)
 abline(reg, col="red")
 
 # LOWESS
-low = lowess(maxid, day)
+low = lowess(db)
 lines(low, col="blue")
+
+detach(db)
