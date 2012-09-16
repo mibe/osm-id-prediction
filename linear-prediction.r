@@ -7,8 +7,9 @@ db <- read.table(path, header=FALSE, sep=",",
   colClasses=c("Date", "numeric"), col.names=c("day", "maxid"))
 attach(db)
 
-# This is our prediction target (2^31 + 1)
-targetid <- 2147483649
+# This is the prediction target (2^31)
+# MAXINT = (2^31)-1
+targetid <- 2147483648
 
 # Create linear model
 model <- lm(day ~ maxid)
