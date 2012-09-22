@@ -13,7 +13,8 @@ reg30 = lm(maxid ~ day, tail(db, n=30))
 reg90 = lm(maxid ~ day, tail(db, n=90))
 
 # Plot everything
-plot(maxid ~ day, db, type = "l", yaxt = "n", xlab="Date", ylab="ID")
+plot(maxid ~ day, db, type = "l", yaxt = "n", xlab="Date", ylab="ID",
+  lwd=2)
 axis(2, maxid)
 axis.Date(3, day, format="%Y-%m-%d")
 
