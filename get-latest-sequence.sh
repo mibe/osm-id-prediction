@@ -9,4 +9,4 @@ else
 	URL=$BASE_URL/$URL
 fi
 
-lynx -dump $URL | grep -Eo '=[0-9]$' | cut -c 2-
+lynx -dump $URL | grep -Eo '=[0-9]+$' | cut -c 2-
